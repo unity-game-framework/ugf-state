@@ -1,0 +1,19 @@
+{
+    "name": "UGF.State.Editor",
+    "rootNamespace": "UGF.State.Editor",
+    "references": [
+        "GUID:a39caba4b4599f54993075bf46080b30",
+        "GUID:abdd615e45137c74ca2ce9c636c78c15"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
