@@ -1,10 +1,19 @@
 {
   "dependencies": {
+    "com.ugf.editortools": {
+      "version": "3.0.0-preview",
+      "depth": 1,
+      "source": "registry",
+      "dependencies": {},
+      "url": "https://api.upmhub.org/registries/unity-game-framework"
+    },
     "com.ugf.state": {
       "version": "file:UGF.State",
       "depth": 0,
       "source": "embedded",
-      "dependencies": {}
+      "dependencies": {
+        "com.ugf.editortools": "3.0.0-preview"
+      }
     },
     "com.unity.ext.nunit": {
       "version": "2.0.5",
