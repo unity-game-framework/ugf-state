@@ -7,7 +7,7 @@ using UnityEngine;
 namespace UGF.State.Editor
 {
     [CustomEditor(typeof(StateSelectComponent), true)]
-    internal class StateGroupSelectComponentEditor : UnityEditor.Editor
+    internal class StateSelectComponentEditor : UnityEditor.Editor
     {
         private SerializedProperty m_propertyDefaultState;
         private ReorderableListDrawer m_listStates;
