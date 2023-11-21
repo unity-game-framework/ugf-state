@@ -5,22 +5,29 @@ using UnityEditor;
 
 namespace UGF.State.Editor
 {
-    [CustomEditor(typeof(StateComponent), true)]
-    internal class StateComponentEditor : UnityEditor.Editor
+    [CustomEditor(typeof(StateGroupComponent), true)]
+    internal class StateGroupComponentEditor : UnityEditor.Editor
     {
-        private SerializedProperty m_propertyDefaultStateIndex;
         private ReorderableListDrawer m_listStates;
+        private ReorderableListSelectionDrawerByElement m_listStatesSelection;
 
         private void OnEnable()
         {
-            m_propertyDefaultStateIndex = serializedObject.FindProperty("m_defaultStateIndex");
             m_listStates = new ReorderableListDrawer(serializedObject.FindProperty("m_states"));
+
+            m_listStatesSelection = new ReorderableListSelectionDrawerByElement(m_listStates)
+            {
+                Drawer = { DisplayTitlebar = true }
+            };
+
             m_listStates.Enable();
+            m_listStatesSelection.Enable();
         }
 
         private void OnDisable()
         {
             m_listStates.Disable();
+            m_listStatesSelection.Disable();
         }
 
         public override void OnInspectorGUI()
@@ -29,9 +36,8 @@ namespace UGF.State.Editor
             {
                 EditorIMGUIUtility.DrawScriptProperty(serializedObject);
 
-                EditorGUILayout.PropertyField(m_propertyDefaultStateIndex);
-
                 m_listStates.DrawGUILayout();
+                m_listStatesSelection.DrawGUILayout();
             }
         }
     }

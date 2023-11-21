@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Threading.Tasks;
+using UnityEngine;
 
 namespace UGF.State.Runtime
 {
-    public abstract class StateAsync : IState
+    public abstract class StateAsyncComponent : MonoBehaviour, IState
     {
         public bool IsValid()
         {

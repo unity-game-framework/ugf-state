@@ -2,7 +2,7 @@
 
 namespace UGF.State.Runtime
 {
-    public abstract class State<TTarget> : State where TTarget : Object
+    public abstract class StateComponent<TTarget> : StateComponent where TTarget : Object
     {
         [SerializeField] private TTarget m_target;
 

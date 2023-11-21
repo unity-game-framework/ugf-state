@@ -1,10 +1,9 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace UGF.State.Runtime.Misc
 {
-    [Serializable]
-    public class GameObjectState : State<GameObject>
+    [AddComponentMenu("Unity Game Framework/States/Misc/GameObject State", 2000)]
+    public class GameObjectStateComponent : StateComponent<GameObject>
     {
         [SerializeField] private bool m_active;
 
