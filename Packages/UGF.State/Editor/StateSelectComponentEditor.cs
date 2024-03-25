@@ -6,9 +6,10 @@ using UnityEngine;
 
 namespace UGF.State.Editor
 {
-    [CustomEditor(typeof(StateSelectComponent), true)]
+    [CustomEditor(typeof(StateSelectComponent<>), true)]
     internal class StateSelectComponentEditor : UnityEditor.Editor
     {
+        private readonly string[] m_exclude = { "m_Script", "m_states" };
         private SerializedProperty m_propertyDefaultState;
         private ReorderableListDrawer m_listStates;
         private ReorderableListSelectionDrawerByElement m_listStatesSelection;
@@ -39,7 +40,7 @@ namespace UGF.State.Editor
             {
                 EditorIMGUIUtility.DrawScriptProperty(serializedObject);
 
-                EditorGUILayout.PropertyField(m_propertyDefaultState);
+                DrawPropertiesExcluding(serializedObject, m_exclude);
 
                 m_listStates.DrawGUILayout();
             }
@@ -79,13 +80,14 @@ namespace UGF.State.Editor
 
         private void OnRevert()
         {
-            var component = (StateSelectComponent)target;
+            var component = (Component)target;
+            var state = (IStateSelect)target;
 
             serializedObject.ApplyModifiedProperties();
 
             Undo.RegisterFullObjectHierarchyUndo(component.gameObject, "State Select Revert");
 
-            component.Revert();
+            state.Revert();
         }
 
         private bool OnCanApply()
@@ -98,13 +100,14 @@ namespace UGF.State.Editor
 
         private void OnApply()
         {
-            var component = (StateSelectComponent)target;
+            var component = (Component)target;
+            var state = (IStateSelect)target;
 
             serializedObject.ApplyModifiedProperties();
 
             Undo.RegisterFullObjectHierarchyUndo(component.gameObject, "State Select Apply");
 
-            component.Apply(m_listStates.List.selectedIndices[0]);
+            state.Apply(m_listStates.List.selectedIndices[0]);
         }
     }
 }
