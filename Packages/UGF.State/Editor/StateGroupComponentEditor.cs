@@ -5,9 +5,10 @@ using UnityEditor;
 
 namespace UGF.State.Editor
 {
-    [CustomEditor(typeof(StateGroupComponent), true)]
+    [CustomEditor(typeof(StateGroupComponent<>), true)]
     internal class StateGroupComponentEditor : UnityEditor.Editor
     {
+        private readonly string[] m_exclude = { "m_Script", "m_states" };
         private ReorderableListDrawer m_listStates;
         private ReorderableListSelectionDrawerByElement m_listStatesSelection;
 
@@ -35,6 +36,8 @@ namespace UGF.State.Editor
             using (new SerializedObjectUpdateScope(serializedObject))
             {
                 EditorIMGUIUtility.DrawScriptProperty(serializedObject);
+
+                DrawPropertiesExcluding(serializedObject, m_exclude);
 
                 m_listStates.DrawGUILayout();
                 m_listStatesSelection.DrawGUILayout();
