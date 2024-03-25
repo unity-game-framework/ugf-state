@@ -4,13 +4,13 @@ UGF.State
 
 ## Information
 
-- **Version**: `1.0.0-preview`
+- **Version**: `1.0.0-preview.1`
 - **Unity**: `2023.2`
 - **API Compatibility Level**: `.NET Standard 2.1`
 
 ### Dependencies
 
-- `com.ugf.editortools`: `3.0.0-preview`
+- `com.ugf.editortools`: `3.0.0-preview.4`
 
 
 ### Description
